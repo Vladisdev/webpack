@@ -4,7 +4,15 @@ import { BuildOptions } from './types/types'
 
 export const buildLoaders = (options: BuildOptions): ModuleOptions['rules'] => {
   const isDev = options.mode === 'development'
-
+  const cssLoaderWithModules = {
+    loader: 'css-loader',
+    options: {
+      modules: {
+        localIdentName: isDev ? '[name]__[local]' : '[hash:base64:8]',
+      },
+    },
+  }
+  
   const tsLoader = {
     // ts loader обрабатывает jsx
     // если не использовать TypeScript, то нужно использовать babel-loader
@@ -16,10 +24,9 @@ export const buildLoaders = (options: BuildOptions): ModuleOptions['rules'] => {
   const scssLoader = {
     test: /\.s[ac]ss$/i,
     use: [
-      // Creates `style` nodes from JS strings
       isDev ? 'style-loader' : MiniCssExtractPlugin.loader,
       // Translates CSS into CommonJS
-      'css-loader',
+      cssLoaderWithModules,
       // Compiles Sass to CSS
       'sass-loader',
     ],

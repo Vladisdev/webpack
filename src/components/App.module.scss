@@ -1,8 +1,12 @@
-button {
+.btn {
   background: red;
   padding: 15px 20px;
 
   &:hover {
     background: tomato;
   }
+}
+
+.value {
+  color: aqua;
 }
