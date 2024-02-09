@@ -20,7 +20,7 @@ export default (env: EnvVariables) => {
 
   const config: webpack.Configuration = {
     mode: env.mode ?? 'development',
-    entry: path.resolve(__dirname, 'src', 'index.ts'),
+    entry: path.resolve(__dirname, 'src', 'index.tsx'),
     output: {
       path: path.resolve(__dirname, 'build'),
       filename: '[name].[contenthash].js',
@@ -28,10 +28,17 @@ export default (env: EnvVariables) => {
     },
     module: {
       rules: [
+        // порядок loader-ов имеет значение
         {
+          // ts loader обрабатывает jsx
+          // если не использовать TypeScript, то нужно использовать babel-loader
           test: /\.tsx?$/,
           use: 'ts-loader',
           exclude: /node_modules/,
+        },
+        {
+          test: /\.css$/i,
+          use: ['style-loader', 'css-loader'],
         },
       ],
     },
