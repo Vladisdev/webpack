@@ -11,8 +11,17 @@ export const App = () => {
   const increment = () => setCount(count + 1)
   const decrement = () => setCount(count - 1)
 
+  if (__PLATFORM__ === 'desktop') {
+    return <div>DESKTOP</div>
+  }
+
+  if (__PLATFORM__ === 'mobile') {
+    return <div>MOBILE</div>
+  }
+
   return (
     <div>
+      <h1>PLATFORM={__PLATFORM__}</h1>
       <NavLink to={'/'}>main</NavLink>
       <br />
       <NavLink to={'/about'}>about</NavLink>
@@ -21,7 +30,7 @@ export const App = () => {
       <img src={avatarPng} alt='' width={100} height={100} />
       <img src={avatarJpg} alt='' width={100} height={100} />
       <div>
-        <Image style={{ color: 'red' }} width={50} height={50}  />
+        <Image style={{ color: 'red' }} width={50} height={50} />
       </div>
       <Outlet />
       <h1 className={styles.value}>{count}</h1>
