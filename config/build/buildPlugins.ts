@@ -1,3 +1,4 @@
+import ReactRefreshWebpackPlugin from '@pmmmwh/react-refresh-webpack-plugin'
 import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin'
 import HtmlWebpackPlugin from 'html-webpack-plugin'
 import MiniCssExtractPlugin from 'mini-css-extract-plugin'
@@ -24,7 +25,11 @@ export const buildPlugins = ({
   ]
 
   if (isDev) {
-    plugins.push(new webpack.ProgressPlugin(), new ForkTsCheckerWebpackPlugin())
+    plugins.push(
+      new webpack.ProgressPlugin(),
+      new ForkTsCheckerWebpackPlugin(),
+      new ReactRefreshWebpackPlugin()
+    )
     // выносит проверку типов в отдельном процессе
   }
 

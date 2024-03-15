@@ -5,7 +5,7 @@ import { useState } from 'react'
 import { NavLink, Outlet } from 'react-router-dom'
 import styles from './App.module.scss'
 
-const TODO = (arg: number) => console.log('TODO')
+// const TODO = (arg: number) => console.log('TODO')
 
 export const App = () => {
   const [count, setCount] = useState(0)
@@ -13,13 +13,13 @@ export const App = () => {
   const increment = () => setCount(count + 1)
   const decrement = () => setCount(count - 1)
 
-  if (__PLATFORM__ === 'desktop') {
-    return <div>DESKTOP</div>
-  }
+  // if (__PLATFORM__ === 'desktop') {
+  //   return <div>DESKTOP</div>
+  // }
 
-  if (__PLATFORM__ === 'mobile') {
-    return <div>MOBILE</div>
-  }
+  // if (__PLATFORM__ === 'mobile') {
+  //   return <div>MOBILE</div>
+  // }
 
   return (
     <div>
