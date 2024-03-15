@@ -1,5 +1,6 @@
 import HtmlWebpackPlugin from 'html-webpack-plugin'
 import MiniCssExtractPlugin from 'mini-css-extract-plugin'
+import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin'
 import webpack, { Configuration, DefinePlugin } from 'webpack'
 import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer'
 import { BuildOptions } from './types/types'
@@ -20,6 +21,8 @@ export const buildPlugins = ({
     new DefinePlugin({
       __PLATFORM__: JSON.stringify(platform),
     }),
+    // выносит проверку типов в отдельном процессе
+    new ForkTsCheckerWebpackPlugin(),
   ]
 
   if (isDev) {

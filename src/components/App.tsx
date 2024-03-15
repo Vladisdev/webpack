@@ -5,6 +5,8 @@ import { useState } from 'react'
 import { NavLink, Outlet } from 'react-router-dom'
 import styles from './App.module.scss'
 
+const TODO = (arg: number) => console.log('TODO')
+
 export const App = () => {
   const [count, setCount] = useState(0)
 

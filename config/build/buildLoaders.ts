@@ -13,13 +13,19 @@ export const buildLoaders = (options: BuildOptions): ModuleOptions['rules'] => {
       },
     },
   }
-
   const tsLoader = {
     // ts loader обрабатывает jsx
     // если не использовать TypeScript, то нужно использовать babel-loader
     test: /\.tsx?$/,
-    use: 'ts-loader',
     exclude: /node_modules/,
+    use: [
+      {
+        loader: 'ts-loader',
+        options: {
+          transpileOnly: true,
+        },
+      },
+    ],
   }
 
   const scssLoader = {
